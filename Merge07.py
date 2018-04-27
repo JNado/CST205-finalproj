@@ -20,6 +20,7 @@ class MainGUI(QWidget):
         self.add_search_button()
         self.add_dl_button()
         self.add_yt_button()
+        self.add_clear_button()
         self.finalize_layout()
 
     """
@@ -127,6 +128,16 @@ class MainGUI(QWidget):
         self.yt_button.setFixedWidth(150)
         self.yt_button.clicked.connect(self.yt_button_push)
         self.hbtnbox.addWidget(self.yt_button)
+
+    def add_clear_button(self):
+        """
+        Creates a QPushButton to clear the data from
+        the QItemStandardModel.
+        """
+        self.clear_button = QPushButton("Clear")
+        self.clear_button.setFixedWidth(95)
+        self.clear_button.clicked.connect(self.clear_button_push)
+        self.hbtnbox.addWidget(self.clear_button)
 
     def finalize_layout(self):
         """
@@ -250,6 +261,13 @@ class MainGUI(QWidget):
             download_no_itunes(track, artist)
         except:
             self.add_no_match_to_box()
+
+    def clear_button_push(self):
+        """
+        Clears the data from the
+        QItemStandardModel.
+        """
+        self.model.removeRows(0, self.model.rowCount())
 
 """
 Test:
