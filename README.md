@@ -2,15 +2,17 @@
 
 ## Description
 ```
-This software allows you to search for any track, album, artist, or any combonation of the three using the iTunes API. 
-Search results can then be used, with the Youtube-dl module, to be downloaded as an MP3 file. Once the file is complete
-the ID3 data of the mp3 file is set using Mutagen. ID3 data is embedded in the header of a MP3 file and stores information 
-such as artist name, album name, track name, genre, cover art, etc. Then the mp3 file is stored on your local machine in a 
-file path that corresponds to: Fixed/[artist]/[album]/[track].mp3
+This software allows you to search for any track, album, artist, or any combonation of the three using
+the iTunes API. Search results can then be used, with the Youtube-dl module, to be downloaded as an MP3
+file. Once the file is complete the ID3 data of the mp3 file is set using Mutagen. ID3 data is embedded 
+in the header of a MP3 file and stores information such as artist name, album name, track name, genre, 
+cover art, etc. Then the mp3 file is stored on your local machine in a file path that corresponds 
+to: Fixed/[artist]/[album]/[track].mp3
 
-If no match is found on the iTunes API, you can download straight from youtube. However, this method is not recommended due
-to the donwloaded mp3 file is not guaranteed to be the song you originally wanted to download. Also, this method does not 
-set the ID3 data of the resulting mp3 file due to their not being any data from the iTunes API.
+If no match is found on the iTunes API, you can download straight from youtube. However, this method is
+not recommended due to the donwloaded mp3 file is not guaranteed to be the song you originally wanted to
+download. Also, this method does not set the ID3 data of the resulting mp3 file due to their not being 
+any data from the iTunes API.
 ```
 
 ## Required Modules
@@ -49,7 +51,8 @@ Fixed
 search results to be displayed or two sets of downloads to occur.
 5) Clear search results in between each download phase to avoid downloading duplicates. Each
 time you hit download all checked boxes will be downloaded.
-6) If no results are found, NO MATCHES will be displayed. And you have to options: give up, or use the "No Match Download" button.
-This button downloads straight from youtube and requires a track name and an artist. Please note this method is not as reliable, nor 
-embeds ID3 data into the resulting MP3 file.
+6) If no results are found, NO MATCHES will be displayed. And you have two options: give up, or use
+the "No Match Download" button. This button downloads straight from youtube and requires a track name
+and an artist in the search fields. Please note this method is not as reliable, nor embeds ID3 data 
+into the resulting MP3 file.
 ```
