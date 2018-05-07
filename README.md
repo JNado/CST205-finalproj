@@ -8,11 +8,6 @@ Once the file is complete, the ID3 data of that mp3 file is set using mutagen. T
 data is embedded in the header of a mp3 file and stores information such as artist name, album name, 
 track name, genre, cover art, etc. The mp3 file is then stored on your local machine in a file path 
 that corresponds to: Fixed/[artist]/[album]/[track].mp3
-
-If no match is found on the iTunes API, you can download straight from Youtube. However, this method is
-not recommended due to the fact that the downloaded mp3 file is not guaranteed to be the song you originally 
-wanted to download. This method does not set the ID3 data for the resulting mp3 file due to the 
-lack of necessary data that could otherwise be retrieved with the iTunes API.
 ```
 
 ## Required Modules
@@ -47,12 +42,14 @@ Fixed
 2) Select all the tracks you want to download by checking the box to the left of each track.
 3) Make sure the "YDL" directory is empty before each download phase.
 4) Once you are done selecting the tracks, press "Download."
-* Please Note: Do not press the "Search" or "Download" button more than once, as this will cause the  
-current search results to be displayed on top of the previous results, or two sets of downloads to occur.
-5) Clear search results in between each download phase to avoid downloading duplicates. Each
-time "Download" is pressed, anything that is checked will be download.
-6) If no results are found, NO MATCHES will be displayed. From there, you have two options: to give up, 
-or to use the "No Match Download" button. This button downloads straight from Youtube and requires a track name
-and an artist in the search fields. Please note this method is not as reliable, nodoes it embed the ID3 data 
-into the resulting MP3 file.
+```
+
+## Side Notes
+```
+1) Do not press the search or download button more than once.
+2) Search results are dependent on the iTunes API. Meaning if the song is not in the iTunes store, 
+   there will be no search results.
+3) Downloads are dependent youtube. Meaning if your song can not be found on Youtube, the download
+   will not occur. 
+4) Downloads can take some time, so please be patient. 
 ```
