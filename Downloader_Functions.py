@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 import youtube_dl, mutagen, itunespy, os, re, requests
-import urllib, ssl, os, glob
+import urllib, ssl, glob
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 from mutagen.easyid3 import EasyID3
@@ -8,20 +8,24 @@ from mutagen.id3 import ID3, APIC, TIT2, TPE1, TALB, TCON
 from mutagen.mp3 import MP3
 from PIL import Image
 from io import BytesIO
-
 """
-Torin Foss | tfoss@csumb.edu | 2018
+CST 205 Final Project
+Torin Foss | Jeff Nadolna | Marc Alejandro | Benoit Millet
 
-Download:
-Contains functions to download songs from youtube.
-Songs must be present on youtube, as well as from
-the iTunes store, as the song information is filled
-with data from the iTunes API.
+Downloader_Functions:
+Contains methods to search the iTunes API for a single
+track, all tracks on an album, all albums with a given
+name, a single track of an album, and all tracks by an artist.
+
+Also contains methods to download songs from Youtube
+with the youtube-dl module.
+
+Disclaimer: Meant for educational purposes only. We are
+not responsible for how others use our software.
 """
-
 def get_track(track, artist):
     """
-    Returns a track object from the itunespy module
+    Returns a single track object from the itunespy module.
     """
     songs = itunespy.search_track(track)
     for song in songs:
@@ -40,8 +44,9 @@ def get_album(album, artist):
 
 def get_album_no_artist(album):
     """
-    Finds all albums with the name album. Returns
-    a list of track objects of each album.
+    Returns a list of track objects. The list
+    is populated with each track of each album
+    with name album and no specified artist.
     """
     songs = []
     albums = itunespy.search_album(album)
@@ -60,7 +65,8 @@ def get_track_on_album(track, album):
 
 def get_artist(artist):
     """
-    Finds all songs affiliated with artist.
+    Returns a list of track objects all made
+    by artist.
     """
     results = []
     artists = itunespy.search_artist(artist)
@@ -84,31 +90,16 @@ def download(songs):
         set_cover_art(path, song)
         set_file_path(path, song)
 
-def download_no_itunes(track, artist):
-    """
-    Downloads straight from youtube without checking
-    the iTunes API. This method does not add ID3 data
-    to the MP3 file, nor ensures you are downloading
-    the exact song you want.
-    """
-    ydl = get_ydl_obj()
-    url = get_url(track, artist)
-    ydl.download([url])
-    path = glob.glob("YDL/*.mp3")[0]
-    new_dir = '"' + 'Fixed/'+artist+ '/' + '"'
-    os.system('mkdir -p %s' % (new_dir))
-    os.system("mv " + path + " " + new_dir + track + ".mp3")
-
 def get_ydl_obj():
     """
-    Returns a youtube_dl object with
+    Returns a youtube-dl object with
     the specified parameters.
     """
     ydl_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': 'YDL/%(id)s.%(ext)s',
-                'nocheckcertificate': True,
-                'noplaylist' : True,
+                'format': 'bestaudio/best', # get best audio
+                'outtmpl': 'YDL/%(id)s.%(ext)s', # sets output template
+                'nocheckcertificate': True, # bypasses certificate check
+                'noplaylist' : True, # won't download playlists
                 'quiet': True, #suppress messages in command line
                 'postprocessors':
                     [{
@@ -122,9 +113,11 @@ def get_ydl_obj():
 
 def get_url(track, artist):
     """
+    Returns a url as a string to be used by our
+    youtube-dl object.
+
     Scrapes youtube for a video that has
-    track and artist in the name. Returns the
-    first result from the search results.
+    track and artist in the name.
     """
     query = urllib.parse.quote(track+" "+artist)
     url = "https://www.youtube.com/results?search_query=" + query
@@ -137,7 +130,6 @@ def get_url(track, artist):
 def get_soup(url):
     """
     Returns a BeautifulSoup object.
-    A helper function for get_url()
     """
     context = ssl._create_unverified_context()
     req = Request(url, headers={'User-Agent':'Mozilla/5.0'})
@@ -147,8 +139,10 @@ def get_soup(url):
 
 def set_data(path, song):
     """
-    Sets the ID3 header data of the MP3 file
-    foud at the end of path.
+    Sets the ID3 meta data of the MP3 file
+    found at the end of path.
+
+    Song must be a track object.
     """
     new_song = ID3(path)
     new_song.delete()
@@ -159,11 +153,12 @@ def set_data(path, song):
     new_song.save()
     return
 
-
 def set_cover_art(path, song):
     """
-    Embeds a jpg file into the ID3 header data
+    Embeds a jpg file into the ID3 meta data
     of the mp3 file found at the end of path.
+
+    Song must be a track object
     """
     mutagen_song = MP3(path, ID3=ID3)
     img_url = song.artwork_url_100
@@ -185,15 +180,13 @@ def set_file_path(path, song):
     """
     # make dir with artist name
     new_dir = '"' + 'Fixed/'+song.artist_name+ '/' + '"'
-    os.system("mkdir -p %s" % (new_dir))
-
+    os.system("mkdir -p %s" % (new_dir.replace(" ", "_")))
     # make dir with album name
     new_dir = '"' + 'Fixed/'+song.artist_name+ '/'+ song.collection_name+ '/' +'"'
-    os.system("mkdir -p %s" % (new_dir))
-
+    os.system("mkdir -p %s" % (new_dir.replace(" ", "_")))
     # add song to album dir
     new_path = "Fixed/"+song.artist_name+ "/"+ song.collection_name+ "/"+song.track_name+".mp3"
     new_path = '"'+new_path+'"'
     old_path = '"'+path+'"'
-    os.system("mv %s %s" % (old_path, new_path))
+    os.system("mv %s %s" % (old_path, new_path.replace(" ", "_")))
     return
