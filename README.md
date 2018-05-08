@@ -12,6 +12,7 @@ that corresponds to: Fixed/[artist]/[album]/[track].mp3
 
 ## Required Modules
 ```
+PyQt5 
 youtube-dl 
 mutagen 
 itunespy 
@@ -25,7 +26,7 @@ glob
 pillow
 io
 sys
-PyQt5 
+subprocess
 ```
 
 ## Directory Structure
