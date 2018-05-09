@@ -9,8 +9,8 @@ data is embedded in the header of a mp3 file and stores information such as arti
 track name, genre, cover art, etc. The mp3 file is then stored on your local machine in a file path 
 that corresponds to: Fixed/[artist]/[album]/[track].mp3
 
-The user can also create, edit, and play playlists. m3u files are used to store mp3 file paths, these m3u files can
-then be played using your operating system's default music browser.
+The user can also create, edit, and play playlists. m3u files are used to store mp3 file paths, these m3u 
+files can then be played using your operating system's default music browser.
 ```
 
 ## Required Modules
