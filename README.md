@@ -79,7 +79,7 @@ one will be created. If one exists, it will be edited.)
       - if you are on mac the playlists will automatically be added to iTunes 
 ```
 
-## Whats to Come
+## What's to Come
 ```
 In the future we would like to incorporate better searchfunctions, inside the
 Downloader_Functions module. We would,also like to incorporate a check in order
