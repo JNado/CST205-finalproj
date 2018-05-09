@@ -8,9 +8,13 @@ from mutagen.id3 import ID3, APIC, TIT2, TPE1, TALB, TCON
 from mutagen.mp3 import MP3
 from PIL import Image
 from io import BytesIO
+import sys
 """
 CST 205 Final Project
 Torin Foss | Jeff Nadolna | Marc Alejandro | Benoit Millet
+
+Link to github: https://github.com/JNado/CST205-finalproj
+-> full documentation found on the repository linked
 
 Downloader_Functions:
 Contains methods to search the iTunes API for a single
@@ -177,6 +181,32 @@ def set_file_path(path, song):
     Sets the file path of song to:
     YDL/[artist]/[album]/[track].mp3
     In order to easily be found.
+    """
+    if sys.platform == "win32":
+        mv_dir_windows(path, song)
+    else:
+        mv_dir_mac(path, song)
+
+def mv_dir_windows(path, song):
+    """
+    Commands for creating directories,
+    and moving files for windows.
+    """
+    new_dir = '"' + 'Fixed/'+song.artist_name+ '/'+ song.collection_name+ '/' +'"'
+    os.system("mkdir %s" % (new_dir.replace(" ", "_")))
+
+    new_path = "Fixed/"+song.artist_name+ "/"+ song.collection_name+ "/"+song.track_name+".mp3"
+    new_path = '"'+new_path+'"'
+    old_path = '"'+path+'"'
+    os.system("move %s %s" % (old_path, new_path.replace(" ", "_")))
+    return
+    return
+
+
+def mv_dir_mac(path, song):
+    """
+    Commands for creating directories,
+    and moving files for windows.
     """
     # make dir with artist name
     new_dir = '"' + 'Fixed/'+song.artist_name+ '/' + '"'
