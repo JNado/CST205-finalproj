@@ -39,7 +39,7 @@ class MainGUI(QWidget):
         geometry, and the main layouts.
         """
         self.setWindowTitle("Music Downloader")
-        self.setGeometry(0,0, 800, 494)
+        self.setGeometry(100,100, 800, 494)
         self.mbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
         self.hbtnbox = QHBoxLayout()
