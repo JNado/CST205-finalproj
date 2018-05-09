@@ -23,7 +23,8 @@ itunespy
 requests
 future
 beautifulsoup4
-pillow 
+pillow
+pyqt5
 
 Below are in the python standard library.
 os (standard)
