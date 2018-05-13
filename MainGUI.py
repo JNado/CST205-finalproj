@@ -4,10 +4,12 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from Downloader_Functions import *
 from PlaylistGUI import *
-import sys, subprocess
 """
 CST 205 Final Project
 Torin Foss | Jeff Nadolna | Marc Alejandro | Benoit Millet
+
+Link to github: https://github.com/JNado/CST205-finalproj
+-> full documentation found on the repository linked
 
 GUI:
 The main GUI that allows users to search for music,
@@ -39,7 +41,7 @@ class MainGUI(QWidget):
         geometry, and the main layouts.
         """
         self.setWindowTitle("Music Downloader")
-        self.setGeometry(100,100, 800, 494)
+        self.setGeometry(0,0, 800, 494)
         self.mbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
         self.hbtnbox = QHBoxLayout()
