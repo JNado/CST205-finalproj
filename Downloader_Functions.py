@@ -204,8 +204,7 @@ def mv_dir_windows(path, song):
 
 def mv_dir_mac(path, song):
     """
-    Commands for creating directories,
-    and moving files for windows.
+    Commands for creating directories, and moving files for windows.
     """
     # make dir with artist name
     new_dir = '"' + 'Fixed/'+song.artist_name+ '/' + '"'
