@@ -113,4 +113,5 @@ Full documentation here: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 4) The mutagen module allowed us to set MP3 metadata, so when you played the songs
 in your default music browser, all info and cover art was present and everything was organized.
+Full documentation here: https://mutagen.readthedocs.io/en/latest/
 ```
