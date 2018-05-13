@@ -115,3 +115,22 @@ Full documentation here: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 in your default music browser, all info and cover art was present and everything was organized.
 Full documentation here: https://mutagen.readthedocs.io/en/latest/
 ```
+
+## Disclaimer
+```
+This software is for educational purposes only, and should not be used to infringe the copyrights
+of artists, Youtube, or iTunes. We are not responsible for others using our software, nor have we distributed
+our software to any individuals to be used to infringe copyrights. We have not stored copyrighted data on any server
+nor distributed any copyrighted data for our own gain.
+
+The sole purpose of our software is to allow us to learn how to incorporate many Python modules into one project.
+And explore how to use Python modules.
+
+Usage of this software and all provided products is subject to compliance of your countries legal permissions, 
+if your local laws do not permit downloads and audio conversions of online videos you are not allowed to use this
+service. You are also not permitted to use this utility to infringe any sort of copyright by downloading multimedia
+content which you don't have rights to use or is not open-source. We expressly point out that copyrighted material, 
+ie videos, sound files, photographs, etc. may only be reproduced, distributed and processed with the consent of the
+copyright holder. Before downloading a file, please inquire whether this is legal. Otherwise, you may face consequences
+regarding civil and criminal conviction.
+```
