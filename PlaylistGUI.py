@@ -1,11 +1,15 @@
+import sys, subprocess
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from Downloader_Functions import *
-import sys, subprocess
+
 """
 CST 205 Final Project
 Torin Foss | Jeff Nadolna | Marc Alejandro | Benoit Millet
+
+Link to github: https://github.com/JNado/CST205-finalproj
+-> full documentation found on the repository linked
 
 PlaylistGUI:
 A secondary GUI that allows users to create, edit, and
@@ -39,7 +43,7 @@ class PlaylistGUI(QWidget):
         geometry, and the main layouts.
         """
         self.setWindowTitle("Playlist Maker")
-        self.setGeometry(100,100, 800, 494)
+        self.setGeometry(0,0, 800, 494)
         self.mbox = QVBoxLayout()
         self.hbox = QHBoxLayout()
         self.hbtnbox = QHBoxLayout()
@@ -126,7 +130,7 @@ class PlaylistGUI(QWidget):
         given playlist in your operating
         system's default music player.
         """
-        self.play_btn = QPushButton("Play Selected Songs")
+        self.play_btn = QPushButton("Play Playlist")
         self.play_btn.clicked.connect(self.play_btn_push)
         self.hbtnbox.addWidget(self.play_btn)
 
