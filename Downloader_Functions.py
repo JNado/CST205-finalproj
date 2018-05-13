@@ -202,7 +202,6 @@ def mv_dir_windows(path, song):
     return
     return
 
-
 def mv_dir_mac(path, song):
     """
     Commands for creating directories,
