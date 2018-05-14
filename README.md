@@ -58,7 +58,11 @@ Playlists
    there will be no search results.
 3) Downloads are dependent on Youtube. Meaning if your song can not be found on Youtube, the download
    will not occur. 
-4) Downloads can take some time, so please be patient. 
+4) Downloads can take some time, so please be patient.
+5) For Windows users: Youtube-DL requires FFMPeg to work, so follow the instructions on the install page very closely, such as having the                   directory information be correct as well. Else FFMPeg will not work and the program itself will not function correctly.
+
+Complete instructions can be found at this URL:
+http://adaptivesamples.com/how-to-install-ffmpeg-on-windows/
 ```
 
 ## How to Create, Edit, and Play Playlists
